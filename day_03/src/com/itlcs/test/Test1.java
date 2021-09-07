@@ -6,17 +6,26 @@ package com.itlcs.test;
  */
 public class Test1 {
     public static void main(String[] args) {
-        method(new Shape());
+        Circle circle = new Circle();
+        method(circle);
+        System.out.println(circle.hashCode());
     }
 
     static void method(Shape shape) {
         shape.draw();
+        shape.erase();
+        System.out.println(shape.hashCode());
     }
 }
 
 class Shape {
     public void draw() {}
     public void erase() {}
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
 
 class Circle extends Shape {
@@ -25,6 +34,11 @@ class Circle extends Shape {
     }
     public void erase() {
         System.out.println("erase circle");
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }
 
